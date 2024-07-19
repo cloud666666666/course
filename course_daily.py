@@ -6,6 +6,8 @@ today = datetime.datetime.now().strftime("%A")
 course_list=[]
 week_list=["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 messages = []
+filename='.html'#填入你要解析的html
+your_email = ''#填入你的邮箱地址
 class Course():
     def __init__(self, name,time,location):
         self.name = name
@@ -23,7 +25,7 @@ class timetable():
 
 
 def get_course():
-    with open('get_course.html', 'r', encoding='utf-8') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         content = file.read()
     soup = BeautifulSoup(content, "lxml")
     for i in range(4):
@@ -58,8 +60,8 @@ def get_timetable(messages=messages):
 def send_email(subject, message, to_email):
     SMTP_SERVER = 'smtp.qq.com'
     SMTP_PORT = 587
-    SMTP_USERNAME = '2353493891@qq.com'  # 更改为您的Email地址
-    SMTP_PASSWORD = 'gswqhdstochteceh'  # 更改为您的Email密码授权码
+    SMTP_USERNAME = '2353493891@qq.com'  
+    SMTP_PASSWORD = 'gswqhdstochteceh'  
     msg = MIMEText(message, 'plain', 'utf-8')
     msg['From'] = SMTP_USERNAME
     msg['To'] = to_email
@@ -82,7 +84,7 @@ def start():
     else:
         str_subject='Have a good day!'
         message='There is no class today, go do something you want to do!'
-    send_email(subject=str_subject, message=message, to_email='yunhaowang326@gmail.com')
+    send_email(subject=str_subject, message=message, to_email=your_email)
 
 if __name__ == '__main__':
     get_timetable()
