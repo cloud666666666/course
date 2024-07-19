@@ -78,12 +78,12 @@ def send_email(subject, message, to_email):
 def start():
     if messages:
         message=''
-        str_subject='Today you will have '+str(len(messages))+' classes'
+        str_subject=today+' you will have '+str(len(messages))+' classes'
         for i in messages:
             message+=str(i)+'\n'
     else:
         str_subject='Have a good day!'
-        message='There is no class today, go do something you want to do!'
+        message='Today is '+today+'! There is no class today, go do something you want to do!'
     send_email(subject=str_subject, message=message, to_email=your_email)
 
 if __name__ == '__main__':
