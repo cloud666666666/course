@@ -3,6 +3,8 @@ import smtplib
 from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 today = datetime.datetime.now().strftime("%A")
+# today = datetime.datetime.now() + datetime.timedelta(days=1)
+# today = tomorrow.strftime("%A")这两行代码是获取第二天的课程
 course_list=[]
 week_list=["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 messages = []
